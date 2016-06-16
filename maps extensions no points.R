@@ -60,10 +60,18 @@ map.extent.mypoint<- gmap(e, filename = "Sacele", mypointM)
 
 library(RgoogleMaps) # get base maps from Google
 
+#prima posibilitate: punct si zoom
 #daca dai un punct lonlat si faci zoom 
 newnap1<-GetMap(center= c(45.6, 25.6), zoom= 10, 
                 destfile="zona BV.png", maptype = "terrain")
 
+#a doua posibilitate:definesti o zona cu bounding box
 
-
-
+study.area<- GetMap.bbox(lonR=c(25,26.5), latR=c(45,46.5), destfile = "studyarea.png", maptype="terrain")
+#ok, e cam mare, sa micsoram
+study.area2<-GetMap.bbox(lonR = c(25.3,26.5), latR = c(45.4, 46.5), destfile = "studyarea2.png", maptype="terrain")
+path_mypoints<-("~/private/using maps in R/mypoints_data.txt")
+mypoints.df<-read.table(path_mypoints, header=TRUE)
+summary(mypoints.df)
+PlotOnStaticMap(study.area2, lat=mypoints.df$N, lon=mypoints.df$E, destfile="studyarea_points.png", 
+                cex=0.5, pch=19, col="red", add=F )
