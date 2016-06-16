@@ -77,3 +77,10 @@ bmp("/home/roxana/private/using maps in R/mapwithpoints.bmp", width=600, height 
 PlotOnStaticMap(study.area2, lat=mypoints.df$N, lon=mypoints.df$E, 
                 cex=0.5, pch=19, col="red", add=F )
 dev.off()
+#####
+# I will try a nicer maptype for this
+study.area2.2<-GetMap.bbox(lonR = c(25.3,26.5), latR = c(45.4, 46.5), destfile = "studyarea2.gmap", maptype="satellite")
+bmp("/home/roxana/private/using maps in R/mapwithpoints_sat.bmp", width=600, height  =600)
+PlotOnStaticMap(study.area2.2, lat=mypoints.df$N, lon=mypoints.df$E, 
+                cex=0.5, pch=19, col="red", add=F )
+dev.off()
