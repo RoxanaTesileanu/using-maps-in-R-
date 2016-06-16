@@ -73,5 +73,7 @@ study.area2<-GetMap.bbox(lonR = c(25.3,26.5), latR = c(45.4, 46.5), destfile = "
 path_mypoints<-("~/private/using maps in R/mypoints_data.txt")
 mypoints.df<-read.table(path_mypoints, header=TRUE)
 summary(mypoints.df)
-PlotOnStaticMap(study.area2, lat=mypoints.df$N, lon=mypoints.df$E, destfile="studyareapoints.png", 
+bmp("/home/roxana/private/using maps in R/mapwithpoints.bmp", width=600, height  =600)
+PlotOnStaticMap(study.area2, lat=mypoints.df$N, lon=mypoints.df$E, 
                 cex=0.5, pch=19, col="red", add=F )
+dev.off()
